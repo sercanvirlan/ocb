@@ -33,7 +33,7 @@ RUN { \
   } > /usr/local/etc/php/conf.d/docker-oc-php.ini
 
 # yaml
-RUN pecl install yaml-2.2.1 && echo "extension=yaml.so" > /usr/local/etc/php/conf.d/ext-yaml.ini
+RUN pecl install yaml-2.2.2 && echo "extension=yaml.so" > /usr/local/etc/php/conf.d/ext-yaml.ini
 
 # xdebug
 RUN pecl install xdebug
