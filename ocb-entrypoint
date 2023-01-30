@@ -35,9 +35,10 @@ else
     # Pushing crontab
     if [ "${OCB_CRON,,}" == "true" ]; then
         echo 'Adding crontab "* * * * * /usr/local/bin/php /var/www/html/artisan schedule:run"'
-        echo "* * * * * /usr/local/bin/php /var/www/html/artisan schedule:run > /proc/1/fd/1 2>/proc/1/fd/2" | tee -a /var/spool/cron/root
+        echo "* * * * * /usr/local/bin/php /var/www/html/artisan schedule:run > /proc/1/fd/1 2>/proc/1/fd/2" | tee -a /etc/cron.d/october-cron
+        crontab /etc/cron.d/october-cron
         echo 'Starting cron service'
-        service cron start
+        service cron restart
     fi
 
     docker-oc-entrypoint $@
